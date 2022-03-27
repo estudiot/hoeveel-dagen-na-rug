@@ -110,7 +110,7 @@ export default function DefaultTemplate({ title, sections, seo }: Page) {
           </svg>
 
           <span className={styles['text-left']}>dagen</span>
-          <span className={styles['text-right']}>na rug</span>
+          <span className={styles['text-right']}>na-rug</span>
         </div>
 
         <section className={styles['dates-section']}>
