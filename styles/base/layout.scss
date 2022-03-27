@@ -1,0 +1,95 @@
+/*
+ * Gaps.
+ * The space between elements.
+ */
+$gaps: (
+  tiny: rem(4),
+  tiny-small: rem(8),
+  small: rem(12),
+  small-medium: rem(16),
+  medium: rem(20),
+  medium-large: rem(28),
+  large: rem(32),
+  huge: rem(40),
+);
+@function gap($size) {
+  @return map-get($gaps, $size);
+}
+
+/*
+ * Constrains.
+ * The maximum size of elements.
+ */
+$constrains: (
+  tiny: rem(450),
+  small: rem(660),
+  small-medium: rem(800),
+  medium: rem(940),
+  medium-large: rem(1035),
+  large: rem(1275),
+  huge: rem(2000),
+);
+@function constrain($size) {
+  @return map-get($constrains, $size);
+}
+@mixin constrain($size) {
+  max-width: constrain($size);
+}
+@mixin large-page-constrain() {
+  @include constrain(huge);
+  margin-right: auto;
+  margin-left: auto;
+}
+
+/*
+ * Block.
+ */
+$block-paddings: (
+  small: 0.8rem,
+  medium: 2rem,
+  large: 4rem,
+);
+
+@mixin block($size: large) {
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: map-get($block-paddings, small);
+  padding-left: map-get($block-paddings, small);
+  @include bp-min(small) {
+    padding-right: map-get($block-paddings, medium);
+    padding-left: map-get($block-paddings, medium);
+
+    @if ($size != full) {
+      max-width: calc(#{constrain($size)} + #{map-get($row-margins, large)});
+    }
+  }
+  @include bp-min(medium) {
+    padding-right: map-get($block-paddings, large);
+    padding-left: map-get($block-paddings, large);
+  }
+
+  .no-csscalc &,
+  .no-cssvwunit & {
+    max-width: constrain($size);
+  }
+}
+
+/*
+ * Row.
+ */
+$row-margins: (
+  small: 1.5vw,
+  medium: 3vw,
+  large: 6vw,
+  huge: 7.5vw,
+);
+@mixin row-top($size: medium) {
+  padding-top: calc(#{map-get($row-margins, $size)} + 2rem);
+}
+@mixin row-bottom($size: medium) {
+  padding-bottom: calc(#{map-get($row-margins, $size)} + 2rem);
+}
+@mixin row($size: medium) {
+  @include row-top($size);
+  @include row-bottom($size);
+}

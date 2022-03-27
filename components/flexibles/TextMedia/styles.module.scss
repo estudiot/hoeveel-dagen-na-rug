@@ -1,0 +1,40 @@
+@import '../../../styles/base.scss';
+
+.text-media {
+  @include block;
+  @include row;
+  display: grid;
+  grid-template-areas:
+    'image .'
+    'title title'
+    'text text';
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 0 gap(huge);
+  align-items: center;
+
+  @include bp-min(medium) {
+    grid-template-areas:
+      'image title'
+      'image text';
+  }
+}
+.text-media[data-order='image-text'] {
+  @include bp-min(medium) {
+    grid-template-areas:
+      'title image'
+      'text image';
+  }
+}
+
+.title {
+  grid-area: title;
+  align-self: end;
+}
+.text {
+  @include constrain(small);
+  grid-area: text;
+  align-self: start;
+}
+.image-container {
+  grid-area: image;
+}

@@ -1,0 +1,14 @@
+@import '../../../styles/base.scss';
+
+.large-text {
+  @include block(medium);
+  @include row(huge);
+}
+
+.content {
+  @include text-large;
+}
+
+.link {
+  color: $primary-color;
+}

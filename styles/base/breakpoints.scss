@@ -1,0 +1,57 @@
+/**
+ * Breakpoints
+ */
+$breakpoints: (
+  tiny: 480,
+  small: 680,
+  medium: 960,
+  large: 1280,
+  huge: 1680,
+);
+
+/**
+* Media query breakpoints mixins.
+*
+* Usage:
+* div {
+*    width: 60px;
+*    @include bp-min(small) { width: 80px; }
+*    @include bp-min(640) { width: 80px; }
+* }
+*/
+@mixin bp-min($points: 0) {
+  $width: $points;
+  @if map-get($breakpoints, $points) {
+    $width: map-get($breakpoints, $points);
+  }
+
+  @media (min-width: rem($width)) {
+    @content;
+  }
+}
+
+@mixin bp-max($points: 0) {
+  $width: $points;
+  @if map-get($breakpoints, $points) {
+    $width: map-get($breakpoints, $points);
+  }
+
+  @media (max-width: (rem($width) - 0.0625rem)) {
+    @content;
+  }
+}
+
+@mixin bp-min-max($min-points: 0, $max-points: 0) {
+  $min-width: $min-points;
+  $max-width: $max-points;
+  @if map-get($breakpoints, $min-points) {
+    $min-width: map-get($breakpoints, $min-points);
+  }
+  @if map-get($breakpoints, $max-points) {
+    $max-width: map-get($breakpoints, $max-points);
+  }
+
+  @media (min-width: rem($min-width)) and (max-width: (rem($max-width) - 0.0625rem)) {
+    @content;
+  }
+}

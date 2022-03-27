@@ -1,0 +1,115 @@
+/* stylelint-disable value-keyword-case */
+$system-font: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica,
+  Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+
+$sans-serif: $system-font;
+$serif: serif;
+
+$normal: normal;
+$bold: bold;
+
+@mixin numeric-font {
+  font-family: $system-font;
+}
+@mixin regular-font {
+  font-family: $sans-serif;
+  font-weight: $normal;
+}
+@mixin serif-font {
+  font-family: $serif;
+}
+
+/**
+ * Body
+ */
+@mixin text-large {
+  @include regular-font;
+  font-size: rem(18);
+  line-height: 1.7;
+  @include bp-min(medium) {
+    font-size: rem(24);
+  }
+}
+@mixin text-medium {
+  @include regular-font;
+  font-size: rem(16);
+  line-height: 1.7;
+  @include bp-min(medium) {
+    font-size: rem(18);
+  }
+}
+@mixin text-small {
+  @include regular-font;
+  font-size: rem(12);
+  line-height: 1.7;
+  @include bp-min(medium) {
+    font-size: rem(14);
+  }
+}
+
+/**
+ * Heading
+ */
+@mixin heading-huge {
+  @include regular-font;
+  margin-top: 0;
+  margin-bottom: 0.5em;
+  font-weight: $bold;
+  font-size: rem(50);
+  line-height: 1;
+
+  @include bp-min(small) {
+    font-size: rem(62);
+  }
+  @include bp-min(medium) {
+    font-size: rem(75);
+  }
+}
+@mixin heading-large {
+  @include regular-font;
+  margin-top: 0;
+  margin-bottom: 0.5em;
+  font-weight: $bold;
+  font-size: rem(32);
+  line-height: 1;
+
+  @include bp-min(medium) {
+    font-size: rem(50);
+  }
+}
+@mixin heading-medium {
+  @include regular-font;
+  margin-top: 0;
+  margin-bottom: 0.75em;
+  font-weight: $bold;
+  font-size: rem(28);
+  line-height: 1;
+
+  @include bp-min(medium) {
+    font-size: rem(36);
+  }
+}
+@mixin heading-small {
+  @include regular-font;
+  margin-top: 0;
+  margin-bottom: 0.5em;
+  font-weight: $bold;
+  font-size: rem(23);
+  line-height: 1;
+
+  @include bp-min(medium) {
+    font-size: rem(27);
+  }
+}
+@mixin heading-tiny {
+  @include regular-font;
+  margin-top: 0;
+  margin-bottom: 0.5em;
+  font-weight: $bold;
+  font-size: rem(20);
+  line-height: 1;
+
+  @include bp-min(medium) {
+    font-size: rem(24);
+  }
+}

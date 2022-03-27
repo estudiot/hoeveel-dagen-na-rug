@@ -1,0 +1,184 @@
+/* stylelint-disable selector-max-universal */
+
+/**
+ * Screen reader only
+ */
+@mixin sr-only {
+  overflow: hidden;
+  position: absolute;
+  width: 1px;
+  height: auto;
+  margin: 0;
+  padding: 0;
+  white-space: nowrap;
+  border: 0;
+  clip: rect(0 0 0 0);
+}
+
+/**
+* Styled scrollbar
+*/
+@mixin styled-scrollbar($color: $blackish) {
+  // Standardized (currently only Firefox, plus on macOS only when system
+  // preferences are set to always show scrollbars).
+  scrollbar-color: $color transparent;
+  scrollbar-width: thin;
+
+  // WebKit only (Chrome, Safari, Edge).
+  &::-webkit-scrollbar-track {
+    margin: 3px 0;
+    background-color: transparent;
+  }
+  &::-webkit-scrollbar {
+    width: 12px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: $color;
+    background-clip: padding-box;
+    border: 3px solid transparent;
+    border-top: 0;
+    border-bottom: 0;
+  }
+}
+/**
+* Hide scrollbar
+*/
+@mixin hide-scrollbar {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE 10+ */
+  &::-webkit-scrollbar {
+    display: none; /* Chrome Safari */
+  }
+}
+
+/**
+* Easier way to provide object-fit polyfill hook
+*/
+@mixin object-fit($fit: cover, $position: center) {
+  font-family: 'object-fit: #{$fit}; object-position: #{$position}';
+  object-fit: $fit;
+  object-position: $position;
+}
+
+/**
+* Smooth scrolling
+*/
+@mixin smooth-scrolling {
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+}
+
+/**
+* Placeholder styling
+*/
+@mixin placeholder {
+  &:placeholder {
+    @content;
+  }
+  &::placeholder {
+    @content;
+  }
+  &::-webkit-input-placeholder {
+    @content;
+  }
+  &:-moz-placeholder {
+    @content;
+  }
+  &::-moz-placeholder {
+    @content;
+  }
+  &:-ms-input-placeholder {
+    @content;
+  }
+}
+
+/**
+* Font smoothing
+*/
+@mixin font-smoothing($enabled: true) {
+  @if $enabled {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  } @else {
+    -webkit-font-smoothing: initial;
+    -moz-osx-font-smoothing: initial;
+  }
+}
+
+/**
+* Clearfix
+* Actually an @extend, but we don't want to depend on inclusion order
+*
+* Usage:
+* section { @include clearfix(); }
+*/
+@mixin clearfix {
+  &::after {
+    content: '';
+    clear: both;
+    display: table;
+  }
+}
+
+/**
+* Bare button
+*
+* Get rid of default button styling
+*/
+@mixin bare-button {
+  background: transparent;
+  cursor: pointer;
+  line-height: 1.1;
+  text-align: center;
+  text-decoration: none;
+  border: 0;
+  appearance: none;
+  &:focus:not(:focus-visible) {
+    outline: 0;
+  }
+}
+
+/*
+* Bare list
+*
+* Get rid of list-style and padding
+*/
+@mixin bare-list {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  & > li {
+    margin: 0;
+  }
+}
+
+/**
+* For targeting high dpi screens
+* Usage:
+* div {
+*    width: 30px; height: 30px; background: url('img.jpg');
+*    @include high-dpi() {
+*        background: url('image-2x.jpg');
+*    }
+* }
+*/
+// stylelint-disable media-feature-name-no-unknown
+@mixin high-dpi {
+  @media only screen and (-webkit-min-device-pixel-ratio: 1.3),
+    only screen and (-o-min-device-pixel-ratio: 13/10),
+    only screen and (min-device-pixel-ratio: 1.3),
+    only screen and (min-resolution: 120dpi),
+    only screen and (min-resolution: 1.3dppx) {
+    @content;
+  }
+}
+
+/**
+* Dev mixins
+*/
+@mixin outline {
+  * {
+    outline: 1px solid lime;
+  }
+}

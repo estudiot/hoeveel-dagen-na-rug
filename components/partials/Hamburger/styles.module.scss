@@ -1,0 +1,37 @@
+@import '../../../styles/base.scss';
+
+.hamburger {
+  transition: 0.3s ease-in-out color;
+}
+.hamburger[data-is-cross='true'] {
+  color: $primary-color;
+}
+
+/**
+ * Stripe style
+ */
+.hamburger__top {
+  transform-origin: 2px 5px;
+  transition: 0.3s ease-in-out transform;
+}
+.hamburger__bottom {
+  transform-origin: 4px 20px;
+  transition: 0.3s ease-in-out transform;
+}
+.hamburger__center {
+  transition: 0.3s ease-in-out opacity;
+}
+
+/**
+ * Is open state
+ */
+.hamburger[data-is-cross='true'] .hamburger__top {
+  transform: rotate(45deg);
+}
+.hamburger[data-is-cross='true'] .hamburger__bottom {
+  transform: rotate(-45deg);
+}
+.hamburger[data-is-cross='true'] .hamburger__center {
+  opacity: 0;
+  transition: 0.15s ease-in-out opacity;
+}

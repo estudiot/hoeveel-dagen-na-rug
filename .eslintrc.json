@@ -1,0 +1,7 @@
+{
+  "extends": ["next/core-web-vitals", "prettier"],
+  "rules": {
+    // Disable as long as we don't use the Next Image module.
+    "@next/next/no-img-element": "off"
+  }
+}

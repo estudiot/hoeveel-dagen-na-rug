@@ -1,0 +1,85 @@
+@import '../../../styles/base.scss';
+
+.rich-content {
+  font-size: inherit;
+}
+
+/**
+ * Headings
+ */
+.rich-content h2,
+.rich-content h3 {
+  margin-top: 0;
+  margin-bottom: gap(medium);
+}
+.rich-content h2 {
+  @include heading-medium;
+}
+.rich-content h3 {
+  @include heading-small;
+}
+.rich-content h4,
+.rich-content h5,
+.rich-content h6 {
+  @include heading-tiny;
+  margin-top: 0;
+  margin-bottom: gap(small);
+}
+.rich-content a {
+  color: $primary-color;
+}
+
+/**
+ * Lists
+ */
+.rich-content ul,
+.rich-content ol {
+  @include bare-list;
+  @include text-small;
+}
+.rich-content ul li,
+.rich-content ol li {
+  position: relative;
+  margin-bottom: gap(medium);
+  padding-left: gap(medium-large);
+}
+
+// <ul>
+.rich-content ul li::before {
+  content: '';
+  position: absolute;
+  top: 0.5em;
+  left: 0;
+  width: gap(tiny-small);
+  height: gap(tiny-small);
+  background-color: $primary-color;
+}
+
+// <ol>
+.rich-content ol {
+  counter-reset: ordered-list;
+}
+.rich-content ol li::before {
+  content: counter(ordered-list) '. ';
+  position: absolute;
+  top: 0;
+  left: 0;
+  counter-increment: ordered-list;
+}
+
+/**
+ * Margins, paddings
+ */
+.rich-content p,
+.rich-content ul,
+.rich-content ol {
+  margin-bottom: gap(large);
+}
+.rich-content p + p {
+  margin-top: -(gap(medium));
+}
+.rich-content p:last-child,
+.rich-content ul:last-child,
+.rich-content ol:last-child {
+  margin-bottom: 0;
+}

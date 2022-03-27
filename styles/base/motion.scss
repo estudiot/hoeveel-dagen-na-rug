@@ -1,0 +1,20 @@
+/**
+ * Timing
+ */
+$pace-quick: 80ms;
+$pace-normal: 300ms;
+$pace-slow: 500ms;
+$pace-slower: 1000ms;
+$pace-slowest: 2s;
+
+/**
+ * Easing
+ */
+$ease-in: cubic-bezier(0.32, 0, 0.67, 0);
+$ease-in-heavy: cubic-bezier(0.7, 0, 0.84, 0);
+$ease-out: cubic-bezier(0.33, 1, 0.68, 1);
+$ease-out-heavy: cubic-bezier(0, 0.55, 0.45, 1);
+
+$ease-in-out: cubic-bezier(0, 0, 0.4, 1);
+$ease-out-overshoot: cubic-bezier(0.34, 1.56, 0.64, 1);
+$ease-in-out-smooth: cubic-bezier(0.76, 0, 0.24, 1);
