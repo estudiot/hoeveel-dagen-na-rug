@@ -5,8 +5,6 @@ import { useRouter } from 'next/router'
 
 import type { AppProps } from 'next/app'
 
-import WithGa from '../components/modules/WithGa'
-
 import '../styles/globals.scss'
 
 export default function App({ Component, pageProps }: AppProps) {
@@ -20,9 +18,9 @@ export default function App({ Component, pageProps }: AppProps) {
     }
 
     // Initialize GA.
-    // const debug = process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_DEBUG === 'true'
+    const debug = process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_DEBUG === 'true'
     ReactGA.initialize(process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID)
-    ReactGA.set({ anonymizeIp: true })
+    ReactGA.set({ anonymizeIp: true, debug })
 
     // Send Pageview for initial view.
     const customUrl = window.location.pathname + window.location.search
@@ -36,9 +34,5 @@ export default function App({ Component, pageProps }: AppProps) {
     }
   }, [router])
 
-  return (
-    <WithGa pageProps={pageProps}>
-      <Component {...pageProps} />
-    </WithGa>
-  )
+  return <Component {...pageProps} />
 }
