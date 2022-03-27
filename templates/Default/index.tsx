@@ -52,7 +52,7 @@ export default function DefaultTemplate({ title, sections, seo }: Page) {
       getDaysInMonth(10, 2022),
       getDaysInMonth(11, 2022),
     ].map(month => {
-      return month.map((date, index, arr) => {
+      return month.map(date => {
         const daysAfterBack = Math.floor(
           // @ts-ignore
           ((dayOfTheBack - date) / oneDay) * -1 + 1
@@ -129,7 +129,7 @@ export default function DefaultTemplate({ title, sections, seo }: Page) {
                       key={`${day.date.toISOString()}`}
                       data-day={day.date.getDay()}
                       className={styles['day']}
-                      data-after={day.daysAfterBack}
+                      data-date={day.date.toISOString()}
                     >
                       <span>{displayDate(day.date.toISOString())}</span>
                       <span className={styles['days-after-back']}>
