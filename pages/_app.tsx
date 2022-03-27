@@ -5,6 +5,8 @@ import { useRouter } from 'next/router'
 
 import type { AppProps } from 'next/app'
 
+import WithGa from '../components/modules/WithGa'
+
 import '../styles/globals.scss'
 
 export default function App({ Component, pageProps }: AppProps) {
@@ -34,5 +36,9 @@ export default function App({ Component, pageProps }: AppProps) {
     }
   }, [router])
 
-  return <Component {...pageProps} />
+  return (
+    <WithGa pageProps={pageProps}>
+      <Component {...pageProps} />
+    </WithGa>
+  )
 }
